@@ -19,7 +19,13 @@ if (navigator.getAutoplayPolicy("mediaelement") !== "allowed") {
     let helptext = document.querySelector('#helptext');
     helptext.style.display = "block";
     awa.style.cursor = "pointer";
-    let unmute = () => { awa.muted = false; awa.play(); awa.style.cursor = "auto"; };
+    let unmute = () => {
+        if (navigator.getAutoplayPolicy("mediaelement") === "allowed") {
+            awa.muted = false;
+            awa.play();
+            awa.style.cursor = "auto";
+        }
+    };
     document.addEventListener("click", unmute);
     document.addEventListener("touchstart", unmute);
     document.addEventListener("keyup", unmute);
