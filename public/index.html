@@ -14,10 +14,19 @@
 </video>
 <p style="font-family:sans-serif; display:none" id=helptext>Press anything to awawawawa</p>
 <script>
+const contents = [
+    "Press anything to awawawa",
+    "Keysmash to awawawa",
+    "Click to awawawa",
+    "Press A to awawawa",
+    "Press W to awawawa",
+]
+
 let awa = document.querySelector('#awa');
 if (navigator.getAutoplayPolicy("mediaelement") !== "allowed") {
     let helptext = document.querySelector('#helptext');
     helptext.style.display = "block";
+    helptext.innerHTML = contents[Math.floor(Math.random() * contents.length)];
     awa.style.cursor = "pointer";
     let unmute = () => {
         if (navigator.getAutoplayPolicy("mediaelement") === "allowed") {
