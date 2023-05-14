@@ -23,7 +23,7 @@ const contents = [
 ]
 
 let awa = document.querySelector('#awa');
-if (navigator.getAutoplayPolicy != null && navigator.getAutoplayPolicy("mediaelement") !== "allowed") {
+function registerAwawawa() {
     let helptext = document.querySelector('#helptext');
     helptext.style.display = "block";
     helptext.innerHTML = contents[Math.floor(Math.random() * contents.length)];
@@ -38,7 +38,15 @@ if (navigator.getAutoplayPolicy != null && navigator.getAutoplayPolicy("mediaele
     document.addEventListener("click", unmute);
     document.addEventListener("touchstart", unmute);
     document.addEventListener("keyup", unmute);
-} else if (navigator.getAutoplayPolicy == null) {
-    awa.play(); 
+}
+if (navigator.getAutoplayPolicy != null) {
+    if (navigator.getAutoplayPolicy("mediaelement") !== "allowed") {
+        registerAwawawa();
+    } else {
+        awa.play();
+    }
+} else {
+    awa.play();
+    registerAwawawa();
 }
 </script>
